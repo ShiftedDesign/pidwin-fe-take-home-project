@@ -4,6 +4,11 @@ import { IoBackspaceOutline } from "react-icons/io5";
 
 export interface IKeyboardProps {
   /**
+   * Flag for if the keyboard should be disabled.
+   */
+  disabled: boolean;
+
+  /**
    * Callback for when a single key is pressed.
    * @param key The key value that is pressed.
    */
@@ -41,7 +46,7 @@ export const Keyboard = (props: IKeyboardProps) => {
         ))}
       </StyledKeyboardRow>
       <StyledKeyboardRow>
-        <KeyboardKey keyInput="enter" onKeyPress={onKeyPress}></KeyboardKey>
+        <KeyboardKey keyInput="ENTER" onKeyPress={onKeyPress}></KeyboardKey>
         {bottomRow.map((key) => (
           <KeyboardKey
             keyInput={key}
@@ -49,7 +54,7 @@ export const Keyboard = (props: IKeyboardProps) => {
             key={key}
           ></KeyboardKey>
         ))}
-        <KeyboardKey keyInput="backspace" onKeyPress={onKeyPress}>
+        <KeyboardKey keyInput="BACKSPACE" onKeyPress={onKeyPress}>
           <IoBackspaceOutline />
         </KeyboardKey>
       </StyledKeyboardRow>
