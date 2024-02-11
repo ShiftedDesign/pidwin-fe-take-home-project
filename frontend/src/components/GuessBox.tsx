@@ -28,7 +28,7 @@ interface IGuessBoxProps {
   delay?: number;
 }
 
-const StyledGuessBox = styled.div<{ delay?: number; flip: boolean }>`
+const StyledGuessBox = styled.div<{ $delay?: number; $flip: boolean }>`
   width: 60px;
   height: 60px;
   border: solid 2px ${(props) => props.theme.colors.darkGray};
@@ -37,9 +37,9 @@ const StyledGuessBox = styled.div<{ delay?: number; flip: boolean }>`
   font-size: 24px;
   border-radius: 2px;
   display: flex;
-  animation-delay: ${(props) => props.delay ?? 0}ms;
+  animation-delay: ${(props) => props.$delay ?? 0}ms;
   animation-duration: 500ms;
-  animation-name: ${(props) => (props.flip ? "flip" : "")};
+  animation-name: ${(props) => (props.$flip ? "flip" : "")};
   aspect-ratio: 1/1;
   &.good {
     background-color: ${(props) => props.theme.colors.green};
@@ -114,8 +114,8 @@ export const GuessBox = (props: IGuessBoxProps) => {
   };
   return (
     <StyledGuessBox
-      delay={props.delay}
-      flip={props.resultCharacter !== undefined}
+      $delay={props.delay}
+      $flip={props.resultCharacter !== undefined}
       key={`${props.character}_${props.index}`}
       className={flippedClass}
     >

@@ -24,8 +24,8 @@ const StyledGuessContainer = styled.div`
 export const GuessContainer = (props: IGuessContainerProps) => {
   return (
     <StyledGuessContainer>
-      {props.pastGuesses.map((guess) => (
-        <GuessRow guess={guess}></GuessRow>
+      {props.pastGuesses.map((guess, index) => (
+        <GuessRow guess={guess} key={`passGuess_${index}`}></GuessRow>
       ))}
       {props.pastGuesses.length < 6 && (
         <GuessRow guess={props.currentGuess}></GuessRow>
@@ -33,7 +33,9 @@ export const GuessContainer = (props: IGuessContainerProps) => {
       {5 - props.pastGuesses.length > 0 &&
         Array(5 - props.pastGuesses.length)
           .fill({ guess: "" })
-          .map((guess) => <GuessRow guess={guess}></GuessRow>)}
+          .map((guess, index) => (
+            <GuessRow guess={guess} key={`nextGuess_${index}`}></GuessRow>
+          ))}
     </StyledGuessContainer>
   );
 };

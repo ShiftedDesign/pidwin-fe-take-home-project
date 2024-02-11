@@ -46,7 +46,7 @@ const StyledHeader = styled.div`
   }
 `;
 
-const StyledGameWrapper = styled.div<{ gameScale: number }>`
+const StyledGameWrapper = styled.div<{ $gameScale: number }>`
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -56,7 +56,7 @@ const StyledGameWrapper = styled.div<{ gameScale: number }>`
   height: 100%;
   max-height: 750px;
   max-width: 500px;
-  zoom: ${(props) => props.gameScale};
+  zoom: ${(props) => props.$gameScale};
 `;
 
 function App() {
@@ -64,7 +64,11 @@ function App() {
   const [currentGuess, setCurrentGuess] = useState("");
   const [gameScale, setGameScale] = useState(1);
 
-  const submitGuess = () => {};
+  // Callback to submit.
+  const submitGuess = () => {
+    hook.guessWord(currentGuess);
+    setCurrentGuess("");
+  };
 
   /**
    * Handle the most recent key press.
@@ -80,7 +84,7 @@ function App() {
         setCurrentGuess((v) => v.slice(0, -1));
         break;
       case "ENTER":
-        currentGuess.length < 5 && submitGuess();
+        currentGuess.length === 5 && submitGuess();
         break;
       default:
         if (currentGuess.length < 5) {
@@ -126,17 +130,14 @@ function App() {
         <StyledHeader>
           <h1>Wordle</h1>
         </StyledHeader>
-        <StyledGameWrapper gameScale={gameScale}>
+        <StyledGameWrapper $gameScale={gameScale}>
           <GuessContainer
             pastGuesses={hook.data}
             currentGuess={{ guess: currentGuess }}
           />
           <StyledGuessButton
             disabled={currentGuess.length < 5}
-            onClick={() => {
-              hook.guessWord(currentGuess);
-              setCurrentGuess("");
-            }}
+            onClick={() => submitGuess()}
           >
             Guess Word
           </StyledGuessButton>
