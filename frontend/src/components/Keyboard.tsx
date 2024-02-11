@@ -15,9 +15,18 @@ export interface IKeyboardProps {
   onKeyPress: (key: string) => void;
 }
 
-const StyledKeyboard = styled.div``;
+const StyledKeyboard = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
 
-const StyledKeyboardRow = styled.div``;
+const StyledKeyboardRow = styled.div`
+  max-height: 60px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+`;
 
 const topRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
 const midRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];

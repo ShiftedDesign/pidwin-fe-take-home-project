@@ -14,5 +14,5 @@ export interface IGuess {
    * '0' - In Word
    * "x" - Wrong
    */
-  result: string;
+  result?: string;
 }
