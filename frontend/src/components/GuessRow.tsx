@@ -22,9 +22,9 @@ export const GuessRow = (props: IGuessRow) => {
         <GuessBox
           character={character}
           resultCharacter={props.guess.result?.[index]}
-          delay={index * 100}
+          delay={(props.guess.result ? index : 0) * 100}
           index={index}
-          key={`${props.guess.guess}_${character}_${index}`}
+          key={`${character}_${index}`}
         />
       ))}
       {

@@ -40,6 +40,10 @@ const StyledGuessBox = styled.div<{ $delay?: number; $flip: boolean }>`
   animation-delay: ${(props) => props.$delay ?? 0}ms;
   animation-duration: 500ms;
   animation-name: ${(props) => (props.$flip ? "flip" : "")};
+  &#hasInput {
+    animation-duration: 250ms !important;
+    animation-name: quickHighlight !important;
+  }
   aspect-ratio: 1/1;
   &.good {
     background-color: ${(props) => props.theme.colors.green};
@@ -71,8 +75,19 @@ const StyledGuessBox = styled.div<{ $delay?: number; $flip: boolean }>`
     50% {
       transform: rotateY(90deg);
     }
-    0% {
+    100% {
       transform: rotateY(0);
+    }
+  }
+  @keyframes quickHighlight {
+    0% {
+      border-color: ${(props) => props.theme.colors.darkGray};
+    }
+    10% {
+      border-color: ${(props) => props.theme.colors.lightGray};
+    }
+    100% {
+      border-color: ${(props) => props.theme.colors.darkGray};
     }
   }
 `;
@@ -118,6 +133,7 @@ export const GuessBox = (props: IGuessBoxProps) => {
       $flip={props.resultCharacter !== undefined}
       key={`${props.character}_${props.index}`}
       className={flippedClass}
+      id={props.character && !props.resultCharacter ? "hasInput" : ""}
     >
       <StyledCenteredText>{props.character}</StyledCenteredText>
     </StyledGuessBox>
