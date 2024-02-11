@@ -135,12 +135,14 @@ function App() {
             pastGuesses={hook.data}
             currentGuess={{ guess: currentGuess }}
           />
-          <StyledGuessButton
-            disabled={currentGuess.length < 5}
-            onClick={() => submitGuess()}
-          >
-            Guess Word
-          </StyledGuessButton>
+          {hook.data.length < 6 && !hook.solved && (
+            <StyledGuessButton
+              disabled={currentGuess.length < 5}
+              onClick={() => submitGuess()}
+            >
+              Guess Word
+            </StyledGuessButton>
+          )}
           <Keyboard onKeyPress={(key) => handleKeyPress(key)} />
         </StyledGameWrapper>
       </StyledApp>

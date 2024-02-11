@@ -14,6 +14,7 @@ const StyledKeyboard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-top: auto;
 `;
 
 const StyledKeyboardRow = styled.div`

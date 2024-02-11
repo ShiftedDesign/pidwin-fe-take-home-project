@@ -19,6 +19,7 @@ const StyledGuessContainer = styled.div`
   flex-direction: column;
   gap: 8px;
   margin-top: 10px;
+  margin-bottom: auto;
 `;
 
 export const GuessContainer = (props: IGuessContainerProps) => {
