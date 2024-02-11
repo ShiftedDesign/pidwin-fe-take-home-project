@@ -27,11 +27,10 @@ export const GuessContainer = (props: IGuessContainerProps) => {
         <GuessRow guess={guess}></GuessRow>
       ))}
       <GuessRow guess={props.currentGuess}></GuessRow>
-      {Array(5 - props.pastGuesses.length)
-        .fill({ guess: "" })
-        .map((guess) => (
-          <GuessRow guess={guess}></GuessRow>
-        ))}
+      {5 - props.pastGuesses.length > 0 &&
+        Array(5 - props.pastGuesses.length)
+          .fill({ guess: "" })
+          .map((guess) => <GuessRow guess={guess}></GuessRow>)}
     </StyledGuessContainer>
   );
 };
