@@ -31,7 +31,7 @@ interface IGuessBoxProps {
 const StyledGuessBox = styled.div<{ delay?: number; flip: boolean }>`
   width: 60px;
   height: 60px;
-  border: solid 2px #3a3a3c;
+  border: solid 2px ${(props) => props.theme.colors.darkGray};
   background-color: transparent;
   font-weight: 700;
   font-size: 24px;
@@ -40,26 +40,27 @@ const StyledGuessBox = styled.div<{ delay?: number; flip: boolean }>`
   animation-delay: ${(props) => props.delay ?? 0}ms;
   animation-duration: 500ms;
   animation-name: ${(props) => (props.flip ? "flip" : "")};
+  aspect-ratio: 1/1;
   &.good {
-    background-color: #538d4e;
+    background-color: ${(props) => props.theme.colors.green};
     border-color: transparent;
   }
   &.bad {
-    border-color: #ff624d;
+    border-color: ${(props) => props.theme.colors.red};
     position: relative;
     &::before {
       content: "";
       position: absolute;
       width: 140%;
       height: 2px;
-      background: #ff624d;
+      background: ${(props) => props.theme.colors.red};
       top: -2px;
       left: 30%;
       transform: rotate(-45deg) translate(-50%, 0);
     }
   }
   &.inWord {
-    background-color: #b59f3b;
+    background-color: ${(props) => props.theme.colors.yellow};
     border-color: transparent;
   }
 
@@ -88,7 +89,7 @@ export const GuessBox = (props: IGuessBoxProps) => {
    */
   useEffect(() => {
     setTimeout(() => {
-      setFlippedClass(`${getId(props.resultCharacter)}`);
+      setFlippedClass(`${getClass(props.resultCharacter)}`);
     }, (props.delay ?? 0) + 250);
   }, []);
 
@@ -96,7 +97,7 @@ export const GuessBox = (props: IGuessBoxProps) => {
    * Returns the correct class name of each box.
    * @param char The result character.
    */
-  const getId = (char?: string) => {
+  const getClass = (char?: string) => {
     if (!char) {
       return "";
     }

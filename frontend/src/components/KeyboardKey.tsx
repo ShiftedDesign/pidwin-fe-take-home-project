@@ -13,16 +13,17 @@ interface IKeyboardKeyProps {
 }
 
 const StyledKeyboardKey = styled.button`
-  background: #3a3a3c;
-  padding: 19px 6.5px;
+  background: ${(props) => props.theme.colors.darkGray};
   border-radius: 5px;
   width: calc(100% / 10);
   max-width: 40px;
   color: white;
   border: none;
   font-weight: 700;
+  aspect-ratio: 43/58;
   &#enter,
   &#backspace {
+    width: calc(100% / 8);
     max-width: 64px;
     font-size: 12px;
   }
@@ -31,7 +32,7 @@ const StyledKeyboardKey = styled.button`
     font-size: 20px;
   }
   &:active {
-    background: #5c5c62;
+    background: ${(props) => props.theme.colors.lightGray};
   }
 `;
 
