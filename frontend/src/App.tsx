@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import "./App.css";
-import { Keyboard } from "./components/Keyboard";
-import { useCheckWord } from "./hooks/useCheckWord";
 import styled, { ThemeProvider } from "styled-components";
+import "./App.css";
 import { GuessContainer } from "./components/GuessContainer";
+import { Keyboard } from "./components/Keyboard";
 import { theme } from "./constants/theme";
+import { useCheckWord } from "./hooks/useCheckWord";
 
 const StyledApp = styled.div`
   background: ${(props) => props.theme.colors.background};

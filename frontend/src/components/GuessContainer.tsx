@@ -1,6 +1,6 @@
 import { IGuess } from "src/api/IGuess";
-import { GuessRow } from "./GuessRow";
 import styled from "styled-components";
+import { GuessRow } from "./GuessRow";
 
 export interface IGuessContainerProps {
   /**

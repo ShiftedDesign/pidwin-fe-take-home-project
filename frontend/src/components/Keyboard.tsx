@@ -1,6 +1,6 @@
+import { IoBackspaceOutline } from "react-icons/io5";
 import styled from "styled-components";
 import { KeyboardKey } from "./KeyboardKey";
-import { IoBackspaceOutline } from "react-icons/io5";
 
 export interface IKeyboardProps {
   /**
